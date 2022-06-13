@@ -23,6 +23,13 @@ distance = data[:,3]
 BH1 = BH[np.mod(np.arange(BH.size),3)!=2]
 distance1 = distance[np.mod(np.arange(distance.size),3)!=2]
 
+x = np.log10(distance1)
+h,xmids,_ = plt.hist(x)
+
+plt.xlabel('Distance from center [Units] ')
+plt.ylabel('Frequency [Units]')
+plt.show()
+
 
 
 '''
@@ -72,18 +79,7 @@ for index, in enumerate(data):
 '''
 #hist, bins, _ = plt.hist(distance1, bins=10)
 #logbins = np.logspace(np.log10(bins[0]),np.log10(bins[-1]),len(bins))
-x = np.log10(distance1)
-
-
-h,xmids,_ = plt.hist(x)
-
-plt.xlabel('Distance from center ')
-plt.ylabel('dn/d')
-
-
-
 
 #plt.xlabel("Primary", "Secondary", "Merged")
 #plt.bar(x,height=y,width=0.75)
 
-plt.show()
