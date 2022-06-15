@@ -5,32 +5,27 @@ import matplotlib.pyplot as plt
 file = '/mnt/data0/jillian/h568/h568.cosmo75.4096gsHsbBH.starlog'
 sl = pynbody.snapshot.tipsy.StarLog(file)
 
-N = 100000000
-
-temperature = np.array(sl['tempform'])(size = N)
-density = np.array(sl['rhoform'])(size = N)
+temperature = np.array(sl['tempform'])
+density = np.array(sl['rhoform'])
 print(temperature)
 print(density)
 
 x = np.log10(temperature)
 y = np.log10(density)
 
-hist,xedges,yedges=np.histogram2d(x,y,bins = 100)
-
-
-print(hist.shape)
-
-plt.imshow(hist)
-
+plt.hist2d(y,x,bins=200)
 plt.colorbar()
-plt.xlabel('Temperature')
-plt.ylabel('Density')
+plt.xlabel('Density')
+plt.ylabel('Temperature')
+
+#plt.gca().invert_yaxis()
 
 plt.show()
 
 
 
-#range[[40000000,180000000],[100,2000]]
+
+
 
 
 '''
