@@ -24,10 +24,6 @@ plt.show()
 
 
 
-
-
-
-
 '''
 
 star = np.where(sl['tform'] > 0.0)

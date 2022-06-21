@@ -8,13 +8,13 @@ import pylab as pl
 import pandas as pd
 
 
-#data = np.loadtxt('findBH.txt')
-#BH,distance = np.loadtxt('findBH.txt',unpack=True,usecols=[1,3])
+data = np.loadtxt('findBH.txt')
+BH,distance = np.loadtxt('findBH.txt',unpack=True,usecols=[1,3])
 
-file = 'findBH.txt'
+#file = 'findBH.txt'
 
-with open(file,'rb') as f:
-    data = np.loadtxt(f)
+#ith open(file,'rb') as f:
+    #data = np.loadtxt(f)
 
 #yes = data[:,0]
 BH = data[:,1]
