@@ -12,16 +12,16 @@ h, g, d, s = rtipsy(file)
 
 munit = 1.84793E16
 mass = [((1E7)/munit), ((1E7)/munit)]
-x = ['0.0', '3.11226E-06']
-y = ['0.0', '0.0']
-z = ['0.0', '0.0']
-vx = ['0.0', '0.0']
-vy = ['0.0', '0.0']
-vz = ['0.0', '0.0']
-phi = ['0.0', '0.0']
-eps = ['3.11226E-06', '3.11226E-06']
-tform = ['-1.0', '-1.0']
-metals = ['0.0', '0.0']
+x = [0.0, 3.11226E-06]
+y = [0.0, 0.0]
+z = [0.0, 0.0]
+vx = [0.0, 0.0]
+vy = [0.0, 0.0]
+vz = [0.0, 0.0]
+phi = [0.0, 0.0]
+eps = [3.11226E-06, 3.11226E-06]
+tform = [-1.0, -1.0]
+metals = [0.0, 0.0]
 
 s = {'mass':mass, 'x':x, 'y':y, 'z':z, 'vx':vx, 'vy':vy, 'vz':vz, 'metals':metals, 'tform':tform, 'eps':eps, 'phi':phi}
 header = {'time':h['time'], 'n':h['n'] + 2, 'ndim':h['ndim'], 'ngas':h['ngas'], 'ndark':h['ndark'], 'nstar':h['nstar'] + 2} #edit h + n
