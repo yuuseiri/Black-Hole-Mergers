@@ -27,7 +27,7 @@ s = {'mass':mass, 'pos':[x,y,z], 'vel':[vx,vy,vz], 'metals':metals, 'tform':tfor
 header = {'time':h['time'], 'n':h['n'] + 2, 'ndim':h['ndim'], 'ngas':h['ngas'], 'ndark':h['ndark'], 'nstar':h['nstar'] + 2} #edit h + n
 print("writing file")
 #wtipsy(file2, h, g, d, s)
-wtipsy(file3, h, g, d, s)
+wtipsy(file3, header, g, d, s)
 
 
 
