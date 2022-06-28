@@ -11,7 +11,7 @@ for filename in os.listdir(directory):
         print(i.stars['pos'])
         print(i.stars['vel'])
     else: 
-        print("printed data")
+        print("There was a .param file")
         
         
         
