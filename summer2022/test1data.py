@@ -8,8 +8,8 @@ for filename in os.listdir(directory):
     f = os.path.join(directory, filename)
     if os.path.isfile(f) and (filename.endswith(".param") == False) and (filename.endswith(".txt") == False):
         i = pynbody.load(f)
-        print(i.stars['vel'])
         print(i.stars['pos'])
+        print(i.stars['vel'])
     else: 
         print("There was a .param or .txt file")
         
