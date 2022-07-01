@@ -6,7 +6,7 @@ from mpl_toolkits import mplot3d
 
 directory = '/mnt/data0/jillian/ICS/ICInG/IsolatedICsFromMichael/test1/'
 
-directory.sort()
+#directory.sort()
 
 files = np.loadtxt("files.list", dtype = 'str')
 
@@ -51,9 +51,9 @@ for filename in sorted(os.listdir(directory)):
 
 
 fig = plt.figure()
-ax = fig.add_subplot(111, projection = '3d')
-ax.plot(x, y, z)
-#ax.scatter3D(vx, vy, vz, cmap='Blues')
+ax = plt.axes(projection = '3d')
+ax.plot3D(x, y, z)
+ax.scatter3D(vx, vy, vz, cmap='Blues')
 
 plt.show()    
 
