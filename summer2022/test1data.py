@@ -34,8 +34,19 @@ z = np.array(z).flatten()
 
 fig = plt.figure()
 ax = plt.axes(projection = '3d')
-ax.plot3D(x, y, z)
-ax.scatter3D(vx, vy, vz, cmap='Blues')
+ax.set_title("Black Hole Position")
+ax.set_xlabel("X")
+ax.set_ylabel("Y")
+ax.set_zlabel("Z")
+ax.plot3D(x, y, z, 'green')
+
+fig = plt.figure()
+ax = plt.axes(projection = '3d')
+ax.set_title("Black Hole Velocity")
+ax.set_xlabel("VX")
+ax.set_ylabel("VY")
+ax.set_zlabel("VZ")
+ax.scatter3D(vx, vy, vz, 'blue')
 
 plt.show()    
 
