@@ -18,7 +18,7 @@ mass = [((1E7)/munit), ((1E7)/munit)]
 x = [0.0, 10 * softening] #strings
 y = [0.0, 0.0]
 z = [0.0, 0.0]
-vx = [0.0, (10/1260)] #conversion factor is 1260
+vx = [0.0, (-10/1260)] #conversion factor is 1260
 vy = [0.0, 0.0]
 vz = [0.0, 0.0]
 phi = [0.0, 0.0]
@@ -30,19 +30,3 @@ s = {'mass':mass, 'x':x, 'y':y, 'z':z, 'vx':vx, 'vy':vy, 'vz':vz, 'metals':metal
 header = {'time':h['time'], 'n':h['n'] + 2, 'ndim':h['ndim'], 'ngas':h['ngas'], 'ndark':h['ndark'], 'nstar':h['nstar'] + 2} #edit h + n
 print("writing file")
 wtipsy(file4, header, g, d, s)
-
-
-
-
-
-'''
-f = pynbody.load(file2) #loads the file 
-f.properties
- 
-f.loadable_keys()  #size of each array is 8388608 (1-8388609)
-f['vel'][8388608]  
-f['eps'][8388608]
-f['phi'][8388608]
-f['mass'][8388608]
-f['pos'][8388608]
-'''
