@@ -38,7 +38,7 @@ for filename in sorted(os.listdir(directory)):
 
 for filename in sorted(os.listdir(directory2)):
     f = os.path.join(directory2, filename)
-    if os.path.isfile(f) and (filename.endswith(".BHmergers") == False) and (filename.endswith(".BlackHoles") == False) and (filename.endswith(".txt~") == False) and (filename.endswith(".txt") == False):
+    if os.path.isfile(f) and (filename.endswith(".BHmergers") == False) and (filename.endswith(".BlackHoles") == False) and (filename.endswith(".txt~") == False) and (filename.endswith(".txt") == False) and (filename.endswith("608") == False) and (filename.endswith("609") == False) and (filename.endswith(".py") == False) and (filename.endswith(".list") == False) and (filename.endswith(".pkl") == False) and (filename.endswith(".iords") == False) and (filename.endswith(".param") == False):
         k = pynbody.load(f)
         print(k.stars['pos'])
         print(k.stars['vel'])
@@ -58,6 +58,14 @@ z = np.array(z).flatten()
 x2 = np.array(x2).flatten() 
 y2 = np.array(y2).flatten()
 z2 = np.array(z2).flatten()
+
+rho =  np.power((np.power(x, 2) + np.power(y, 2) + np.power(z, 2)), 0.5)
+theta = np.arctan(np.divide(y, x))
+phi = np.arccos(np.divide(z, np.power((np.power(x, 2) + np.power(y, 2) + np.power(z, 2)), 0.5)))
+
+rho2 = np.power((np.power(x2, 2) + np.power(y2, 2) + np.power(z2, 2)), 0.5)
+theta2 = np.arctan(np.divide(y2, x2))
+phi2 = np.arccos(np.divide(z2, np.power((np.power(x2, 2) + np.power(y2, 2) + np.power(z2, 2)), 0.5)))
 
 fig = plt.figure()
 ax = plt.axes(projection = '3d')
@@ -90,6 +98,26 @@ ax.set_xlabel("VX2")
 ax.set_ylabel("VY2")
 ax.set_zlabel("VZ2")
 ax.scatter3D(vx2, vy2, vz2, 'blue')
+
+fig = plt.figure()
+ax.set_title("Spherical 1")
+ax.set_xlabel("VX2")
+ax.set_ylabel("VY2")
+ax.set_zlabel("VZ2")
+ax = fig.add_subplot(1,1,1, projection='3d')
+plot = ax.plot_trisurf(
+    rho, theta, phi, cmap=plt.get_cmap('jet'),
+    linewidth=0, antialiased=False, alpha=0.5)
+
+fig = plt.figure()
+ax.set_title("Spherical 2")
+ax.set_xlabel("VX2")
+ax.set_ylabel("VY2")
+ax.set_zlabel("VZ2")
+ax = fig.add_subplot(1,1,1, projection='3d')
+plot = ax.plot_trisurf(
+    rho2, theta2, phi2, cmap=plt.get_cmap('jet'),
+    linewidth=0, antialiased=False, alpha=0.5)
 
 plt.show()    
 
