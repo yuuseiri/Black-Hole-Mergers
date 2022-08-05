@@ -4,6 +4,7 @@ import struct
 from pytipsy import wtipsy #writes
 from pytipsy import rtipsy  #reads  
 
+#file is the base, rtipsy file to wtipsy other files 
 file = '/mnt/data0/jillian/ICS/ICInG/IsolatedICsFromMichael/DMOnlyCollapse_5e11_8388608_Physical_0.01.000480'
 file2 = '/mnt/data0/jillian/ICS/ICInG/IsolatedICsFromMichael/DMOnlyCollapse_5e11_8388608_Physical_0.01_BH2.000480'
 file3 = '/mnt/data0/jillian/ICS/ICInG/IsolatedICsFromMichael/DMOnlyCollapse_5e11_8388608_Physical_0.01_BH3.000480'
