@@ -1,6 +1,8 @@
 import numpy as np
 import pynbody
 
+#makes a sphere region in the sim data 
+
 point1 = "/mnt/data0/jillian/ICS/ICInG/IsolatedICsFromMichael/test3/dennis.000001"
 f = pynbody.load(point1)
 

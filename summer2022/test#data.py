@@ -4,12 +4,14 @@ import numpy as np
 import matplotlib.pyplot as plt 
 from mpl_toolkits import mplot3d
 
+#set directories for OS loop
+
 directory = '/mnt/data0/jillian/ICS/ICInG/IsolatedICsFromMichael/test1/'
 directory2 = '/mnt/data0/jillian/ICS/ICInG/IsolatedICsFromMichael/test2/'
 directory3 = '/mnt/data0/jillian/ICS/ICInG/IsolatedICsFromMichael/test1/DMOnlyCollapse_test1.000016'
 directory4 = '/mnt/data0/jillian/ICS/ICInG/IsolatedICsFromMichael/test2/DMOnlyCollapse_test1.000016'
 
-x = []
+x = [] #empty arrays 
 y = []
 z = [] 
 vx = []
@@ -24,7 +26,7 @@ vy2 = []
 vz2 = []
 
 v = pynbody.load(directory3)
-x.append(v.stars['pos'][:,0])
+x.append(v.stars['pos'][:,0]) #append data into empty arrays based on column
 y.append(v.stars['pos'][:,1])
 z.append(v.stars['pos'][:,2])
 vx.append(v.stars['vel'][:,0])
@@ -38,6 +40,8 @@ z2.append(w.stars['pos'][:,2])
 vx2.append(w.stars['vel'][:,0])
 vy2.append(w.stars['vel'][:,1])
 vz2.append(w.stars['vel'][:,2])
+
+#spherical coordinates equations 
 
 mag1 = np.power((np.power(vx, 2) + np.power(vy, 2) + np.power(vz, 2)), 0.5)
 mag2 = np.power((np.power(vx2, 2) + np.power(vy2, 2) + np.power(vz2, 2)), 0.5)
@@ -67,7 +71,7 @@ print("Test 2 Velocity Magnitude:", mag2*1260)
 print("Test 2 Velocity Direction:", np.degrees(theta4[0]), np.degrees(phi4[0]))
 
 '''
-for filename in sorted(os.listdir(directory)):
+for filename in sorted(os.listdir(directory)): #loops through the directory's files
     f = os.path.join(directory, filename)
     if os.path.isfile(f) and (filename.endswith(".param") == False) and (filename.endswith(".list") == False) and (filename.endswith(".txt") == False):
         i = pynbody.load(f)
@@ -97,7 +101,7 @@ for filename in sorted(os.listdir(directory2)):
     else: 
         print("There was a non data file.")
 
-x = np.array(x).flatten() 
+x = np.array(x).flatten() #this somehow helps the graph  
 y = np.array(y).flatten()
 z = np.array(z).flatten()
 
