@@ -17,13 +17,13 @@ BH,distance = np.loadtxt('findBH.txt',unpack=True,usecols=[1,3])
     #data = np.loadtxt(f)
 
 #yes = data[:,0]
-BH = data[:,1]
-distance = data[:,3]
+BH = data[:,1] #columns 
+distance = data[:,3] 
 
-BH1 = BH[np.mod(np.arange(BH.size),3)!=2]
+BH1 = BH[np.mod(np.arange(BH.size),3)!=2] #stack overflow から how to skip rows 
 distance1 = distance[np.mod(np.arange(distance.size),3)!=2]
 
-x = np.log10(distance1)
+x = np.log10(distance1) 
 h,xmids,_ = plt.hist(x)
 
 plt.xlabel('Distance from center [Units] ')
