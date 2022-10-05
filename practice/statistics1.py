@@ -6,7 +6,7 @@ from scipy import stats
 data1 = np.loadtxt('data1.txt') #data set 1 is definitely not normal, skewed right
 data2 = np.loadtxt('data2.txt')
 data3 = np.loadtxt('data3.txt')
-
+'''
 #manually
 print("This is the manual method.")
 np.sort(data1)
@@ -31,7 +31,7 @@ print("The skew of data set 1 is", sc.stats.skew(data1))
 print("The skew of data set 2 is", sc.stats.skew(data2))
 print("The skew of data set 3 is", sc.stats.skew(data3))
 
-'''
+
 d2 = []
 d3 = []
 
@@ -47,13 +47,18 @@ s3.append(np.power(np.divide(np.sum(np.subtract(data3, np.average(data3), len(da
 t = np.divide((np.subtract(np.average(data2), np.average(data3))), np.power(np.add(np.divide(s2, len(data2)), np.divide(s3, len(data3))), 0.5))
 
 print(t)
-'''
+
+
+
 
 plt.figure()
 counts, edges, plot = plt.hist(data1, bins = 10)
 plt.title("Average Spring Temperature (Celcius)")
 data1_ind = np.unravel_index(np.argmax(counts), counts.shape)
 print("The mode of data1 set is", edges[data1_ind])
+
+plt.show()
+
 
 plt.figure()
 counts, edges, plot = plt.hist(data2, bins = 10)
@@ -66,5 +71,27 @@ counts, edges, plot = plt.hist(data3, bins = 10)
 plt.title("Heights of 5-year-old children in the U.S.")
 data3_ind = np.unravel_index(np.argmax(counts), counts.shape)
 print("The mode of data3 set is", edges[data3_ind])
+'''
+
+#normalizing data1
+attempts = 30
+whileattempts = 0
+
+w = [] 
+
+rand = np.random.randint(0, len(data1), 40, dtype = int)
+
+while whileattempts < attempts: 
+    w.append(np.average(data1[rand]))
+    if whileattempts > attempts: 
+        break
+
+print(w)
+
+'''
+plt.figure()
+counts, edges, plot = plt.hist(w, bins = 10)
+plt.title("Heights of 5-year-old children in the U.S., Normalized")
 
 plt.show()
+'''
