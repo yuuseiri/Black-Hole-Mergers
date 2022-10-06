@@ -9,21 +9,6 @@ data1 = np.loadtxt('data1.txt') #data set 1 is definitely not normal, skewed rig
 data2 = np.loadtxt('data2.txt')
 data3 = np.loadtxt('data3.txt')
 
-
-randomfiles = []
-means = []
-
-for i in range(0, 40):
-    p = shuffle(data1)
-    randomfiles.append(p)
-    q = randomfiles[0:30]
-    means.append(q)
-
-plt.figure()
-plt.hist(means, bins = 10)
-plt.show()
-
-'''
 #manually
 print("This is the manual method.")
 np.sort(data1)
@@ -48,7 +33,7 @@ print("The skew of data set 1 is", sc.stats.skew(data1))
 print("The skew of data set 2 is", sc.stats.skew(data2))
 print("The skew of data set 3 is", sc.stats.skew(data3))
 
-
+'''
 d2 = []
 d3 = []
 
@@ -64,7 +49,7 @@ s3.append(np.power(np.divide(np.sum(np.subtract(data3, np.average(data3), len(da
 t = np.divide((np.subtract(np.average(data2), np.average(data3))), np.power(np.add(np.divide(s2, len(data2)), np.divide(s3, len(data3))), 0.5))
 
 print(t)
-
+'''
 plt.figure()
 counts, edges, plot = plt.hist(data1, bins = 10)
 plt.title("Average Spring Temperature (Celcius)")
@@ -84,21 +69,32 @@ plt.title("Heights of 5-year-old children in the U.S.")
 data3_ind = np.unravel_index(np.argmax(counts), counts.shape)
 print("The mode of data3 set is", edges[data3_ind])
 
-
-
 #normalizing data1
-w = [] 
+means = []
 
-for i in range(0, 40):
-    random.seed(3)
-    x = [np.mean(np.random.choice(data1, size = 30))]
-    w.append(x)
+for i in range(0, 10000):
+    random.shuffle(data1) 
+    x = data1[0:40]
+    q = np.average(x)
+    means.append(q)
 
+array = np.array(means)
+    
 plt.figure()
-plt.hist(w, bins = 10)
-plt.title("Normalized data1")
+plt.hist(array, bins = 30)
 
+#normalizing data2
+means2 = []
 
+for j in range(0, 10000):
+    random.shuffle(data1) 
+    y = data2[0:40]
+    h = np.average(y)
+    means.append(h)
+
+array2 = np.array(means2)
+    
+plt.figure()
+plt.hist(array2, bins = 30)
 
 plt.show()
-'''
