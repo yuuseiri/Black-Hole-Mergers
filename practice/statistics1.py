@@ -87,10 +87,10 @@ plt.hist(array, bins = 30)
 means2 = []
 
 for j in range(0, 10000):
-    random.shuffle(data1) 
+    random.shuffle(data2) 
     y = data2[0:40]
     h = np.average(y)
-    means.append(h)
+    means2.append(h)
 
 array2 = np.array(means2)
     
