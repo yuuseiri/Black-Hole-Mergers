@@ -6,14 +6,14 @@ from scipy import stats
 from sklearn.utils import shuffle 
 
 data1 = np.loadtxt('data1.txt') #data set 1 is definitely not normal, skewed right
-data2 = np.loadtxt('data2.txt')
-data3 = np.loadtxt('data3.txt')
+data2 = np.loadtxt('data2.txt') #data 2 is NOT normal
+data3 = np.loadtxt('data3.txt') #data 3 looks normal enough
 
 #manually
 print("This is the manual method.")
 np.sort(data1)
-print(np.divide(np.sum(data1), len(data1))) #mean
-print(data1[int(np.subtract(np.divide(len(data1), 2), 0.5))]) #median
+print(np.divide(np.sum(data1), len(data1))) #mean is just sum of numbers over number of numbers
+print(data1[int(np.subtract(np.divide(len(data1), 2), 0.5))]) #median is center number
 
 #actual 
 print("This is the fast method.")
@@ -33,7 +33,7 @@ print("The skew of data set 1 is", sc.stats.skew(data1))
 print("The skew of data set 2 is", sc.stats.skew(data2))
 print("The skew of data set 3 is", sc.stats.skew(data3))
 
-'''
+''' #this doesn't work help 
 d2 = []
 d3 = []
 
@@ -51,10 +51,10 @@ t = np.divide((np.subtract(np.average(data2), np.average(data3))), np.power(np.a
 print(t)
 '''
 plt.figure()
-counts, edges, plot = plt.hist(data1, bins = 10)
+counts, edges, plot = plt.hist(data1, bins = 10) #edges are the edges of the bins, counts are the quantity per bin
 plt.title("Average Spring Temperature (Celcius)")
 data1_ind = np.unravel_index(np.argmax(counts), counts.shape)
-print("The mode of data1 set is", edges[data1_ind])
+print("The mode of data1 set is", edges[data1_ind]) #mode is calculated by intervals represented by bins
 
 
 plt.figure()
@@ -72,11 +72,11 @@ print("The mode of data3 set is", edges[data3_ind])
 #normalizing data1
 means = []
 
-for i in range(0, 10000):
-    random.shuffle(data1) 
-    x = data1[0:40]
-    q = np.average(x)
-    means.append(q)
+for i in range(0, 10000): #larger range = more normal distribution due to larger sample size 
+    random.shuffle(data1) #randomly shuffles the data set per i in the loop
+    x = data1[0:40] #takes the first 40 elements of the now shuffled data set (n = 40 here)
+    q = np.average(x) #takes the average of the now 40 elements of a new array
+    means.append(q) 
 
 array = np.array(means)
     
