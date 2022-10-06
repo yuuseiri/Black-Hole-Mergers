@@ -1,11 +1,28 @@
 import numpy as np
+import random
 import matplotlib.pyplot as plt
 import scipy as sc
 from scipy import stats 
+from sklearn.utils import shuffle 
 
 data1 = np.loadtxt('data1.txt') #data set 1 is definitely not normal, skewed right
 data2 = np.loadtxt('data2.txt')
 data3 = np.loadtxt('data3.txt')
+
+
+randomfiles = []
+means = []
+
+for i in range(0, 40):
+    p = shuffle(data1)
+    randomfiles.append(p)
+    q = randomfiles[0:30]
+    means.append(q)
+
+plt.figure()
+plt.hist(means, bins = 10)
+plt.show()
+
 '''
 #manually
 print("This is the manual method.")
@@ -48,16 +65,11 @@ t = np.divide((np.subtract(np.average(data2), np.average(data3))), np.power(np.a
 
 print(t)
 
-
-
-
 plt.figure()
 counts, edges, plot = plt.hist(data1, bins = 10)
 plt.title("Average Spring Temperature (Celcius)")
 data1_ind = np.unravel_index(np.argmax(counts), counts.shape)
 print("The mode of data1 set is", edges[data1_ind])
-
-plt.show()
 
 
 plt.figure()
@@ -71,27 +83,22 @@ counts, edges, plot = plt.hist(data3, bins = 10)
 plt.title("Heights of 5-year-old children in the U.S.")
 data3_ind = np.unravel_index(np.argmax(counts), counts.shape)
 print("The mode of data3 set is", edges[data3_ind])
-'''
+
+
 
 #normalizing data1
-attempts = 30
-whileattempts = 0
-
 w = [] 
 
-rand = np.random.randint(0, len(data1), 40, dtype = int)
+for i in range(0, 40):
+    random.seed(3)
+    x = [np.mean(np.random.choice(data1, size = 30))]
+    w.append(x)
 
-while whileattempts < attempts: 
-    w.append(np.average(data1[rand]))
-    if whileattempts > attempts: 
-        break
-
-print(w)
-
-'''
 plt.figure()
-counts, edges, plot = plt.hist(w, bins = 10)
-plt.title("Heights of 5-year-old children in the U.S., Normalized")
+plt.hist(w, bins = 10)
+plt.title("Normalized data1")
+
+
 
 plt.show()
 '''
