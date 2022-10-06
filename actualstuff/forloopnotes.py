@@ -86,4 +86,7 @@ for x in adj:
   for y in fruits:
     print(x, y)
 
+for x in adj:
+  
+
 #if for some reason the loop has no content, use the pass statement to skip over the loop to avoid any errors
