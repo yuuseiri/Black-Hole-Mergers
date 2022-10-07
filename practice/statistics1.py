@@ -33,23 +33,6 @@ print("The skew of data set 1 is", sc.stats.skew(data1))
 print("The skew of data set 2 is", sc.stats.skew(data2))
 print("The skew of data set 3 is", sc.stats.skew(data3))
 
-''' #this doesn't work help 
-d2 = []
-d3 = []
-
-d2.append(data2)
-d3.append(data3)
-
-s2 = []
-s3 = []
-
-s2.append(np.power(np.divide(np.sum(np.subtract(d2, np.average(d2), len(d2)))), 0.5)) #this shit don't work
-s3.append(np.power(np.divide(np.sum(np.subtract(data3, np.average(data3), len(data3)))), 0.5))
-
-t = np.divide((np.subtract(np.average(data2), np.average(data3))), np.power(np.add(np.divide(s2, len(data2)), np.divide(s3, len(data3))), 0.5))
-
-print(t)
-'''
 plt.figure()
 counts, edges, plot = plt.hist(data1, bins = 10) #edges are the edges of the bins, counts are the quantity per bin
 plt.title("Average Spring Temperature (Celcius)")
@@ -68,6 +51,25 @@ counts, edges, plot = plt.hist(data3, bins = 10)
 plt.title("Heights of 5-year-old children in the U.S.")
 data3_ind = np.unravel_index(np.argmax(counts), counts.shape)
 print("The mode of data3 set is", edges[data3_ind])
+
+#t test for data2 and data3
+s2 = []
+s3 = []
+
+for i in data2:
+    f = np.power(np.absolute(np.subtract(np.average(data2), i)), 2)
+    s2.append(f)
+
+for j in data3:
+    g = np.power(np.absolute(np.subtract(np.average(data3), j)), 2)
+    s3.append(g)
+
+ssquared = np.divide(np.add(np.sum(s2), np.sum(s3)), np.subtract(np.add(len(data2), len(data3)), 2))
+
+t = np.divide(np.absolute(np.subtract(np.average(data2), np.average(data3))), np.power(np.add(np.divide(ssquared, len(data2)), np.divide(ssquared, len(data3))), 0.5))
+
+print("This is the t value for data2 and data3", t)
+print("Since t is less than 5, we can assume that the difference between the two data sets are not due to randomness.")
 
 #normalizing data1
 means = []
